@@ -1,0 +1,252 @@
+@charset "utf-8";
+
+/* Reset
+**********************************************/
+
+*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { 
+	margin:0; padding:0; font-size:100%; font:inherit; vertical-align:baseline; border:0; outline:0; background:transparent; 
+}
+
+ol, ul { 
+	list-style:none; 
+}
+
+blockquote, q { 
+	quotes:none; 
+}
+
+table { 
+	border-collapse:collapse; border-spacing:0; 
+}
+	
+a { 
+	color: #000; background:transparent; 
+}
+
+a:hover { 
+	color: #036; 
+}
+
+html, a, p, strong, span {
+	font-family: Arial, Verdana;
+	font-size: 12px;	
+}
+
+/*
+ * Constants
+ ***************************/
+
+/* Colors */
+$black  : #000000;
+$orange : #f86e00;
+$error  : red;
+$grey-light : #ebebeb;
+
+/* Radius */
+$btn-radius : 4px;
+
+/* Paddings & Margins */
+$btn-left-right : 10px;
+
+/* Times */
+$timebg : 250ms;
+
+/* Sizes */
+$main : 960px;
+
+/*
+ * CSS3 styles
+ ***************************/
+@mixin btn-orange {
+	@include change-bg;
+	color: $black;
+	background-color: $orange;
+	cursor: pointer;
+	padding: 0 $btn-left-right 0 $btn-left-right;
+	text-decoration: none;
+
+	&:hover {
+		color: $black;
+		background-color: lighten($orange, 15%);
+	}
+}
+@mixin change-bg {
+	transition: background $timebg;
+	-moz-transition: background $timebg;
+	-webkit-transition: background $timebg;
+	-o-transition: background $timebg;
+}
+@mixin rounded {
+	border-radius: $btn-radius;
+  	-moz-border-radius: $btn-radius;
+  	-webkit-border-radius: $btn-radius;
+}
+/*
+ * Globals
+ ***************************/
+ p, span {
+ 	font-family: Arial, Verdana;
+ 	font-size: 14px;
+ }
+.error {
+	color: red;
+	padding-top: 10px;
+}
+.rounded {
+	border-radius: $btn-radius;
+  	-moz-border-radius: $btn-radius;
+  	-webkit-border-radius: $btn-radius;
+}
+/*
+ * Main
+ ***************************/
+#main {
+	width: 100%;
+	height: 100%;
+	color: $black;
+	text-align: center;
+	display: inline-block;
+	position: relative;
+}
+h1 {
+	text-align: center;
+	margin: 0 auto;
+}
+#form-login {
+	input {
+		width: 150px;
+		margin-top: 50px;
+		border: 1px solid $black;
+
+		&.error {
+			border: 1px solid $error;
+			padding: 0;
+		}
+	}
+}
+.btn-login {
+	width: auto;		
+}
+nav {
+	width: 600px;
+	margin: 0 auto;
+}
+nav a {
+	padding: 5px $btn-left-right;
+	text-decoration: none;
+	
+	&.active, &:hover {
+		@include btn-orange;
+		padding: 5px $btn-left-right;
+	}
+}
+section {
+	width: $main;
+	margin: 0 auto;
+}
+.novinky {
+	width: 100%;
+	margin-top: 20px;
+
+	.box {
+		width: 100%;
+		height: 25px;
+		padding: 15px;
+		margin-bottom: 3px;
+		background-color: lighten($black, 96%);
+		display: inline-block;
+		vertical-align: top;
+		text-decoration: none;
+
+		.datum {
+			line-height: 25px;
+			float: left;
+			padding-right: 10px;
+		}
+		p {
+			line-height: 25px;
+			width: 75%;
+			text-align: left;
+			float: left;
+		}
+	}
+	.box:nth-of-type(odd) {
+		background-color: lighten($black, 92%);
+	}
+	.box:hover, .box:nth-of-type(odd):hover {
+		color: $black;
+	}
+}
+.button {
+	@include btn-orange;
+	padding: 5px 10px;
+	float: left;
+
+	/* Button new */
+	&.new {
+		margin-bottom: 5px;
+	}
+
+	/* Edit & Delete buttons */
+	&.edit, &.delete {
+		margin-right: 5px;
+		float: left;
+	}
+
+	/* Cancel button */
+	&.cancel {
+		background-color: lighten($black, 65%);
+		margin-left: 5px;
+		&:hover {
+			background-color: lighten($black, 75%);
+		}
+	}
+}
+
+/* Add form */
+.add-form {
+	width: 600px;
+	height: 500px;
+	background-color: lighten($black, 85%);
+	position: absolute;
+	top: 50px;
+	left: 300px;
+	padding: 10px;
+	box-shadow: 2px 2px 3px #888;
+	display: none;
+
+	label {
+		width: 100%;
+		margin-top: 5px;
+		text-align: left;
+		display: block;
+	}
+	input {
+		width: 570px;
+		height: 30px;
+		margin-bottom: 10px;
+		padding-left: 10px;
+		background-color: #ffffff;
+		border: 1px solid lighten($black, 60%);
+		float: left;
+	}
+	textarea {
+		width: 580px;		
+		float: left;
+	}
+}
+h2 {
+	width: 100%;
+	font-size: 20px;
+	margin-bottom: 10px;
+	text-align: left;
+	float: left;
+}
+.jHtmlArea {
+	width: 580px;
+	font-family: Arial, Verdana;
+	border: 1px solid lighten($black, 60%);
+	margin-bottom: 10px;
+	background-color: #ffffff;
+	@include rounded;
+}

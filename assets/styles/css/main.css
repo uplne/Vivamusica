@@ -1,0 +1,1649 @@
+@charset "utf-8";
+
+/* Reset
+**********************************************/
+
+*, html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { 
+	margin:0; padding:0; font-size:100%; font:inherit; vertical-align:baseline; border:0; outline:0; background:transparent; 
+}
+
+ol, ul { 
+	list-style:none; 
+}
+
+blockquote, q { 
+	quotes:none; 
+}
+
+table { 
+	border-collapse:collapse; border-spacing:0; 
+}
+	
+a { 
+	color: #000; background:transparent; 
+}
+
+a:hover { 
+	color: #036; 
+}
+
+a, p, strong, span {
+	font-size: 12px;	
+}
+
+/* Fonts
+**********************************************/
+
+@font-face {
+    font-family: 'RenaultTLigRegular';
+    src: url('../../../assets/fonts/r001012t-webfont.eot');
+    src: url('../../../assets/fonts/r001012t-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../../assets/fonts/r001012t-webfont.woff') format('woff'),
+         url('../../../assets/fonts/r001012t-webfont.ttf') format('truetype'),
+         url('../../../assets/fonts/r001012t-webfont.svg#RenaultTLigRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.renaultBold {
+	font-family: 'Arimo', sans-serif;
+}
+
+/* Basic
+**********************************************/
+
+html {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px auto;
+}
+.vivamusicaPage {
+	width: 100%;
+	margin: 0px auto;
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+}
+.overlay_close {
+	width: 38px;
+	height: 24px;
+	background: transparent url(../../images/assets.png) -140px -6px no-repeat;
+	position: absolute;
+	cursor: pointer;
+}
+.overlay_close:hover {
+	background-position: -140px -36px;
+}
+#preloader {
+	width: 88px;
+	height: 63px;
+	background: transparent url(../../images/preloader.png) top left no-repeat;
+	position: absolute;
+	display: none;
+}
+/* Top navigation
+**********************************************/
+#header {
+	width: 100%;
+	height: auto;
+	display: inline-block;
+}
+#nav {
+	width: 80%;
+	height: 40px;
+	background-color: transparent;
+	margin: 0 auto;
+	position: relative;
+	float: right;
+}
+.mainMenu {
+	height: 40px;
+	float: right;
+	list-style-type: none;
+	float: right;
+}
+.mainMenu li {
+	width: 105px;
+	padding: 0 0 0 5px;
+	float: left;
+}
+.mainMenu a {
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	padding: 12px 0 0 0;
+	text-decoration: none;
+	width: inherit;
+	float: left;
+}
+.mainMenu a:hover {
+	text-decoration: underline;
+}
+.mainMenu li .program {
+	background: transparent url(../../../assets/images/nav/butt1.png) top left no-repeat;
+}
+.mainMenu li .festival {
+	background: transparent url(../../../assets/images/nav/butt2.png) top left no-repeat;
+}
+.mainMenu li .vstupenky {
+	background: transparent url(../../../assets/images/nav/butt3.png) top left no-repeat;
+}
+.mainMenu li .galeria {
+	background: transparent url(../../../assets/images/nav/butt4.png) top left no-repeat;
+}
+.mainMenu li .sienslavy {
+	background: transparent url(../../../assets/images/nav/butt5.png) top left no-repeat;
+}
+.mainMenu li .media {
+	background: transparent url(../../../assets/images/nav/butt6.png) top left no-repeat;
+}
+.mainMenu li .team {
+	background: transparent url(../../../assets/images/nav/butt7.png) top left no-repeat;
+}
+.mainMenu li .partneri {
+	background: transparent url(../../../assets/images/nav/butt8.png) top left no-repeat;
+}
+.mainMenu li .kontakt {
+	background: transparent url(../../../assets/images/nav/butt4.png) top left no-repeat;
+}
+.langNav {
+	float: left;
+	list-style-type: none;
+}
+.langNav li {
+	padding: 5px 0 0 0;
+	clear: both;
+}
+.langNav a.enLang {
+	width: 73px;
+	height: 13px;
+	background: transparent url(../../../assets/images/nav/left_langen.png) top left no-repeat;
+	text-indent: -9999px;
+	float: left;
+}
+.langNav a.enLang:hover {
+	background: transparent url(../../../assets/images/nav/left_langen.png) top left no-repeat;
+}
+.langNav a.skLang {
+	width: 94px;
+	height: 13px;
+	background: transparent url(../../../assets/images/nav/left_langsk.png) top left no-repeat;
+	text-indent: -9999px;
+	float: left;
+}
+.langNav a.skLang:hover {
+	background: transparent url(../../../assets/images/nav/left_langsk.png) top left no-repeat;
+}
+
+/* Background slider
+**********************************************/
+#backgrounds {
+	position:fixed; 
+	top:-50%; 
+	left:-50%; 
+	width:200%; 
+	height:200%;
+}
+#backgrounds img {
+	background-color: #000;
+	position:absolute; 
+	top:0; 
+	left:0; 
+	right:0; 
+	bottom:0;
+	z-index:0;
+	margin:auto; 
+	min-width:50%;
+	min-height:50%;
+}
+#backgrounds img .active {
+	z-index: 1;
+}
+.galleryarrow {
+	width: 62px;
+	height: 40px;
+	background: transparent url(../../images/assets.png) top left no-repeat;
+	position: absolute;
+	z-index: -1;
+	cursor: pointer;
+}
+.galleryarrow.left {
+	background-position: -0px -0px;
+}
+.galleryarrow.left:hover {
+	background-position: -0px -40px;
+}
+.galleryarrow.right {
+	background-position: -62px -0px;
+}
+.galleryarrow.right:hover {
+	background-position: -62px -40px;
+}
+/* Main elements
+**********************************************/
+h1 {
+	width: 153px;
+	height: 107px;
+	background: transparent url(../../../assets/images/logo.png) top left no-repeat;
+	text-indent: -9999px;
+	margin: 45px 0 0 0;
+	float: left;
+}
+
+h2 {
+	width: 500px;
+	font-size: 32px;
+	color: rgb(255, 255, 255); /* The Fallback */
+	color: rgba(255, 255, 255, .95);
+	padding: 42px 0 0 5px;
+	float: left;
+}
+h3 {
+	font-family: 'Arimo', sans-serif;
+	font-size: 22px;
+	line-height: 26px;
+	color: #FFF;
+}
+h4 {
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	color: #FFF;
+}
+em {
+	font-style: italic;
+}
+.main {
+	width: 100%;
+	min-height: 470px;
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+.text_box p {
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	color: #FFF;
+	text-align: left;
+	line-height: 22px;
+}
+.text_box p strong {
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	text-align: left;
+	line-height: 22px;
+}
+.text_box p a {
+	font-size: 14px;
+	color: #FFF;
+	text-align: left;
+	line-height: 22px;
+	text-decoration: underline;
+}
+.text_box p a:hover {
+	text-decoration: none;
+}
+.text_box p.top {
+	padding-top: 20px;
+}
+
+/* Program
+**********************************************/
+.thumbBox {
+	padding: 7px 0;
+	text-decoration: none;
+	position: absolute;
+	display: none;
+}
+
+.thumbBox1 {
+	width: 186px;
+	height: 217px;
+	background: transparent url(../../../assets/images/boxes/box1.png) top left no-repeat;
+}
+
+.thumbBox2 {
+	width: 186px;
+	height: 217px;
+	background: transparent url(../../../assets/images/boxes/box2.png) top left no-repeat;
+}
+
+.thumbBox3 {
+	width: 186px;
+	height: 231px;
+	background: transparent url(../../../assets/images/boxes/box3.png) top left no-repeat;
+}
+
+.thumbBox4 {
+	width: 186px;
+	height: 217px;
+	background: transparent url(../../../assets/images/boxes/box4.png) top left no-repeat;
+}
+
+.thumbBox5 {
+	width: 186px;
+	height: 233px;
+	background: transparent url(../../../assets/images/boxes/box5.png) top left no-repeat;
+}
+
+.thumbBox6 {
+	width: 188px;
+	height: 233px;
+	background: transparent url(../../../assets/images/boxes/box6.png) top left no-repeat;
+}
+
+.thumbBox7 {
+	width: 186px;
+	height: 202px;
+	background: transparent url(../../../assets/images/boxes/box7.png) top left no-repeat;
+}
+
+.thumbBox8 {
+	width: 186px;
+	height: 217px;
+	background: transparent url(../../../assets/images/boxes/box8.png) top left no-repeat;
+}
+
+.thumbBox9 {
+	width: 198px;
+	height: 231px;
+	background: transparent url(../../../assets/images/boxes/box9.png) top left no-repeat;
+}
+
+.thumbBox .date {
+	font-family: 'Arimo', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	padding-left: 5px;
+	color: #FFF;
+	float: left;
+}
+
+.thumbBox h3 {
+	width: 133px;
+	font-size: 14px;
+	line-height: 20px;
+	padding-left: 4px;
+	float: left;
+}
+.thumbBox9 h3 span {
+	font-size: 14px;
+	line-height: 20px;
+	color: #f58220;
+}
+
+.thumbBox .date,
+.thumbBox h3 {
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .8);
+}
+.text_box {
+	width: 700px;
+	height: 318px;
+	text-align: center;
+	position: absolute;
+	top: 25%;
+	left: 30%;
+	z-index: 100;
+	display: none;
+}
+.text_box_wrap {
+	width: 652px;
+	height: 318px;
+	background: transparent url(../../images/boxes/text_bg_long.png) top left no-repeat;
+	margin: 0 auto;
+}
+.program_detail .arrow {
+	width: 62px;
+	height: 40px;
+	background: transparent url(../../images/assets.png) top left no-repeat;
+	position: absolute;
+	z-index: -1;
+	cursor: pointer;
+}
+.program_detail .arrow.left {
+	background-position: -0px -0px;
+	top: 139px;
+	left: -15px;
+}
+.program_detail .arrow.left:hover {
+	background-position: -0px -40px;
+}
+.program_detail .arrow.right {
+	background-position: -62px -0px;
+	top: 139px;
+	left: 645px;
+}
+.program_detail .arrow.right:hover {
+	background-position: -62px -40px;
+}
+.program_detail h3,
+.sien_detail h3 {
+	width: 68%;
+	height: 30px;
+	padding: 15px 0 0 15px;
+	text-align: left;
+	overflow: hidden;
+	float: left;
+}
+.program_detail h4,
+.sien_detail h4 {
+	line-height: 16px;
+	padding: 15px 35px 0 0;
+	text-align: right;
+	float: right;
+}
+.program_detail h4 span,
+.sien_detail h4 span {
+	display: block;
+}
+.program_detail .center,
+.festival_historia .center,
+.team .center,
+.sien_detail .center {
+	width: 95%;
+	padding-top: 10px;
+	margin: 0 auto;
+	display: inline-block;
+	clear: both;
+}
+.program_detail .image_holder,
+.festival_historia .image_holder,
+.team .image_holder,
+.sien_detail .image_holder {
+	width: 180px;
+	padding-right: 15px;
+	position: relative;
+	float: left; 
+}
+.program_detail .text,
+.festival_historia .text
+.team .text,
+.sien_detail .text {
+	width: 420px;
+	display: inline-block;
+	float: right;
+}
+.partneri .text {
+	width: 300px;
+	padding: 30px 0 0 30px;
+	display: inline-block;
+	float: left;
+}
+.program_detail .vstupne,
+.program_detail .vstupne a {
+	width: 150px;
+	font-size: 14px;
+	color: #FFF;
+	text-align: right;
+	line-height: 20px;
+	padding: 5px 25px 0 0;
+	display: block;
+	float: right;
+	text-decoration: none;
+}
+.program_detail .vstupne a {
+	padding: 5px 0 0 0;
+}
+.program_detail .vstupne a:hover {
+	text-decoration: underline;
+}
+.program_detail .center .bottom {
+	width: 100%;
+	display: inline-block;
+	clear: both;
+}
+.program_detail .center .bottom .fb-like {
+	widows: 100px;
+	padding: 8px 0 0 0;
+	float: left;
+}
+/* Festival
+**********************************************/
+.text_box p {
+	padding-bottom: 10px;
+}
+#kontakt ul.kontakt {
+	width: 70%;
+	margin: 30px 0 0 100px;
+}
+#kontakt ul.kontakt li {
+	width: 50%;
+	margin-top: 15px;
+	display: block;
+	text-align: left;
+	float: left;
+}
+#kontakt ul.kontakt li p,
+#kontakt ul.kontakt li a {
+	font-family: 'Arimo', sans-serif;
+	margin: 0;
+	padding: 0;
+	background: none;
+	color: #FFFFFF;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: left;
+}
+#festival ul,
+#kontakt ul {
+	width: 300px;
+	margin: 0 0 0 45px;
+	list-style-type: none;
+	text-align: center;
+	position: absolute;
+	float: left;
+}
+#festival ul li,
+#kontakt ul li {
+	text-align: center;
+	margin-top: 5px;
+	display: none;
+}
+#kontakt ul.kontaktmenu li {
+	margin-top: -5px;	
+}
+#festival ul li a,
+#kontakt ul li a {
+	font-family: 'Arimo', sans-serif;
+	font-size: 22px;
+	line-height: 28px;
+	color: #05314e;
+	text-align: center;
+	text-decoration: none;
+	background: transparent url(../../images/assets.png) top left no-repeat;
+	display: inline-block;
+}
+#festival ul li a.festival {
+	width: 211px;
+	height: 29px;
+	background-position: -7px -90px;
+}
+#festival ul li a.festival.active,
+#festival ul li a.festival:hover {
+	color: #FFF;
+	background-position: -232px -90px;
+}
+#festival ul li a.historia {
+	width: 180px;
+	height: 31px;
+	padding-top: 2px;
+	background-position: -10px -126px;
+}
+#festival ul li a.historia.active,
+#festival ul li a.historia:hover {
+	color: #FFF;
+	background-position: -200px -126px;
+}
+.festival_historia .image_holder {
+	margin-top: 15px;
+}
+.festival_historia .image_holder span {
+	width: 100%;
+	font-size: 24px;
+	text-align: center;
+	position: absolute;
+	top: 20px;
+	left: 0;
+	display: inline-block;
+}
+/* Vstupenky & skolka
+**********************************************/
+.vstupenky p, .skolka p {
+	width: 100%;
+	margin: 0 auto;
+	clear: both;
+}
+.vstupenky p span.price {
+	font-size: 14px;
+}
+.vstupenky p a {
+	color: #CCC;
+}
+.vstupenky p a:hover {
+	color: #FFF;
+}
+/* Team
+**********************************************/
+.team .image_holder {
+	padding: 25px 20px 0 5px;
+}
+.team .text {
+	width: 390px;
+	float: left;
+}
+#kontakt ul. li {
+	margin-top: -5px;	
+}
+#kontakt ul li a.name1,
+#kontakt ul li a.name10 {
+	width: 216px;
+	height: 34px;
+	background-position: -10px -182px;
+}
+#kontakt ul li a.name1.active,
+#kontakt ul li a.name1:hover,
+#kontakt ul li a.name10.active,
+#kontakt ul li a.name10:hover {
+	color: #FFF;
+	background-position: -10px -219px;
+}
+#kontakt ul li a.name2 {
+	width: 221px;
+	height: 33px;
+	background-position: -12px -260px;
+}
+#kontakt ul li a.name2.active,
+#kontakt ul li a.name2:hover {
+	color: #FFF;
+	background-position: -12px -299px;
+}
+#kontakt ul li a.name3 {
+	width: 318px;
+	height: 43px;
+	line-height: 35px;
+	background-position: -12px -340px;
+}
+#kontakt ul li a.name3.active,
+#kontakt ul li a.name3:hover {
+	color: #FFF;
+	background-position: -12px -383px;
+}
+#kontakt ul li a.name4 {
+	width: 282px;
+	height: 43px;
+	line-height: 37px;
+	background-position: -12px -428px;
+}
+#kontakt ul li a.name4.active,
+#kontakt ul li a.name4:hover {
+	color: #FFF;
+	background-position: -12px -475px;
+}
+#kontakt ul li a.name5 {
+	width: 268px;
+	height: 37px;
+	background-position: -12px -527px;
+}
+#kontakt ul li a.name5.active,
+#kontakt ul li a.name5:hover {
+	color: #FFF;
+	background-position: -12px -573px;
+}
+#kontakt ul li a.name6 {
+	width: 229px;
+	height: 39px;
+	padding-top: 3px;
+	background-position: -12px -616px;
+}
+#kontakt ul li a.name6.active,
+#kontakt ul li a.name6:hover {
+	color: #FFF;
+	background-position: -12px -660px;
+}
+#kontakt ul li a.name7 {
+	width: 252px;
+	height: 31px;
+	background-position: -12px -707px;
+}
+#kontakt ul li a.name7.active,
+#kontakt ul li a.name7:hover {
+	color: #FFF;
+	background-position: -12px -748px;
+}
+#kontakt ul li a.name8 {
+	width: 278px;
+	height: 32px;
+	background-position: -12px -787px;
+}
+#kontakt ul li a.name8.active,
+#kontakt ul li a.name8:hover {
+	color: #FFF;
+	background-position: -12px -828px;
+}
+#kontakt ul li a.name9 {
+	width: 239px;
+	height: 31px;
+	background-position: -12px -871px;
+}
+#kontakt ul li a.name9.active,
+#kontakt ul li a.name9:hover {
+	color: #FFF;
+	background-position: -12px -913px;
+}
+#kontakt h3 {
+	padding: 5px 0 10px 25px;
+	font-size: 28px;
+	text-align: left;
+	clear: both;
+}
+#kontakt p.position {
+	padding: 50px 0 0 150px;
+	font-size: 22px;
+	text-align: left;
+	clear: both;
+}
+#kontakt p.main-copy {
+	width: 360px;
+	padding: 5px 0 0 0;
+	float: right;
+}
+/* Kontakt
+**********************************************/
+#partneri .text {
+	width: 90%;
+	padding: 15px 0;
+}
+/* Kontakt
+**********************************************/
+.kontakt_box {
+	width: 336px;
+	height: 336px;
+	background: transparent url(../../images/boxes/kontakt_bg.png) top left no-repeat;
+	text-align: center;
+	position: absolute;
+	top: 15%;
+	left: 40%;
+	z-index: 100;
+	display: none;
+}
+.kontakt_box ul {
+	width: 80%;
+	list-style-type: none;
+	margin: 0 auto;
+	padding-top: 0px;
+	text-align: center;
+}
+.kontakt_box ul li {
+	text-align: center;
+	padding-top: 13px;
+}
+.kontakt_box ul li p,
+.kontakt_box ul li a {
+	font-size: 14px;
+	color: #FFF;
+	clear: both;
+}
+.kontakt_box ul li a {
+	color: #CCC;
+}
+.kontakt_box ul li a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+.kontakt_box ul li strong {
+	font-size: 14px;
+	font-weight: bold;
+}
+/* Media
+**********************************************/
+.mediaBox1 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/viva2012.png) top left no-repeat;
+	position: absolute;
+	top: 45%;
+	left: 999px;
+}
+.mediaBox2 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/hvor.png) top left no-repeat;
+	position: absolute;
+	top: 10%;
+	left: 300px;
+}
+.mediaBox3 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/viva2011.png) top left no-repeat;
+	position: absolute;
+	top: 10%;
+	left: 533px;
+}
+.mediaBox4 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/vargas.png) top left no-repeat;
+	position: absolute;
+	top: 10%;
+	left: 766px;
+}
+.mediaBox5 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/dirigent2009.png) top left no-repeat;
+	position: absolute;
+	top: 45%;
+	left: 300px;
+}
+.mediaBox6 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/huslista2009.png) top left no-repeat;
+	position: absolute;
+	top: 45%;
+	left: 533px;
+}
+.mediaBox7 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/kvarteto2009.png) top left no-repeat;
+	position: absolute;
+	top: 45%;
+	left: 766px;
+}
+.mediaBox8 {
+	width: 223px;
+	height: 198px;
+	background: transparent url(../../images/boxes/media/viva2008.png) top left no-repeat;
+	position: absolute;
+	top: 45%;
+	left: 999px;
+}
+.overlay {
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+#media .thumbBox h3 {
+	width: 80%;
+	padding: 20px 0 0 10px;
+}
+.video {
+	margin: 20px auto 0 auto;
+}
+/* Sien slavy
+**********************************************/
+#sien-slavy,
+#hall-of-fame {
+	position: relative;
+}
+#sien-slavy ul,
+#hall-of-fame ul {
+	width: 10000px;
+	height: 175px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+#sien-slavy ul li,
+#hall-of-fame ul li {
+	height: 175px;
+	padding: 0 10px 0 0;
+	display: inline;
+	float: left;
+}
+#sien-slavy ul li a,
+#hall-of-fame ul li a {
+	display: none;
+}
+#sien-slavy ul li a img,
+#hall-of-fame ul li a img {
+	margin-top: 29px;
+}
+#dock {
+	position:absolute; 
+	bottom: 5px; 
+	left: 0; 
+	width: 100%; 
+	height: 175px;
+	overflow: hidden;
+}
+/* Galeria
+**********************************************/
+.subnav {
+	width: auto;
+	list-style-type: none;
+	display: inline-block;
+	position: absolute;
+}
+.subnav li {
+	padding-right: 10px;
+	float: left;
+}
+.subnav li a {
+	font-size: 20px;
+	color: #FFF;
+	padding: 0px 8px;
+	text-decoration: none;
+	background-color: none;
+	
+	transition: background 400ms;
+	-moz-transition: background 400ms;
+	-webkit-transition: background 400ms;
+	-o-transition: background 400ms;
+	
+	border-radius: 2px;
+}
+.subnav li a:hover {
+	background-color: rgba(7,45,68,.4);
+}
+/* Partneri
+**********************************************/
+.partneri_box {
+	width: 950px;
+	height: 320px;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 40%;
+	z-index: 100;
+	display: none;
+}
+/* Footer
+**********************************************/
+#footer {
+	width: 100%;
+	height: 55px;
+  background: transparent url(../../images/pas.png) top left repeat-x;
+	position: fixed;
+	bottom: 0;
+}
+#footer .left {
+	width: 150px;
+	float: left;
+}
+#footer .left .fb-like {
+	padding: 23px 0 0 20px;
+}
+#footer .loga-partneri {
+	width: 700px;
+	margin-top: 20px;
+	float: left; }
+
+#footer .loga-partneri span,
+#footer .loga-partneri a {
+	font: 11px Arial;
+	float: left; }
+
+.loga-partneri .partner1 {
+	margin: 0 45px 0 15px; }
+
+.loga-partneri .partner2 {
+	margin: 0 10px; }
+
+.loga-partneri .partner3 {
+	margin: 1px 10px 0 10px; }
+
+.loga-partneri .partner4 {
+	margin: 5px 10px 0 10px; }
+
+.loga-partneri .partner5 {
+	margin: 10px 10px 0 10px; }
+
+#footer .center {
+	width: 280px;
+	margin: 0 auto;
+}
+#footer .center .zse {
+	width: 125px;
+	height: 38px;
+	background: transparent url(../../images/partneri/zse.png) top left no-repeat;
+	text-indent: -9999px;
+	margin-top: 16px;
+	float: left;
+}
+#footer .center .orange {
+	width: 115px;
+	height: 33px;
+	background: transparent url(../../images/partneri/orange.png) top left no-repeat;
+	text-indent: -9999px;
+	margin: 17px 0 0 15px;
+	float: left;
+}
+#footer .right {
+	width: 480px;
+	float: right;
+}
+#footer .right img {
+	padding: 22px 20px 0 0;
+}
+#footer a.facebook {
+	width: 52px;
+	height: 20px;
+	background: transparent url(../../images/facebook.png) top left no-repeat;
+	text-indent: -9999px;
+	margin: 25px 0 0 20px;
+	display: inline-block;
+	float: left;
+}
+#footer a.facebook:hover {
+	background: transparent url(../../images/facebookOn.png) top left no-repeat;
+}
+/* Banner
+**********************************************/
+.banner {
+	width: 300px;
+	height: 225px;
+	overflow: hidden;
+	position: fixed;
+	top: 70px;
+	right: 0;
+}
+.bannerImage {
+	position: absolute;
+	top: 0;
+	right: -300px;
+}
+/* Scrollpane
+**********************************************/
+.scroll-pane {
+	overflow: auto;
+	display: inline-block;
+	float: left;
+}
+.scroll-pane.program,
+.festival_historia .scroll-pane {
+	width: 400px;
+	height: 220px;
+}
+.sien_detail .scroll-pane {
+	width: 400px;
+	height: 250px;
+}
+.festival_historia .scroll-pane {
+	margin-top: 15px;
+	height: 260px;
+}
+.scroll-pane.festival {
+	width: 580px;
+	height: 260px;
+	margin: 30px auto;
+	float: none;
+}
+.jspContainer {
+	width: auto;
+	height: inherit;
+	float: left;
+}
+
+.jspContainer
+{
+	overflow: hidden;
+	position: relative;
+	float: left;
+}
+
+.jspPane
+{
+	position: absolute;
+	left: 0;
+}
+
+.jspVerticalBar
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16px;
+	height: 100%;
+}
+
+.jspHorizontalBar
+{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 16px;
+}
+
+.jspVerticalBar *,
+.jspHorizontalBar *
+{
+	margin: 0;
+	padding: 0;
+}
+
+.jspCap
+{
+	display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+	float: left;
+}
+
+.jspTrack
+{
+	width: 16px;
+	height: 220px;
+	position: relative;
+}
+
+.jspDrag
+{
+	width: 16px;
+	height: 220px;
+	background: transparent url(../../images/scroller.png) 0px 0px no-repeat;
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+}
+
+.jspDrag:hover
+{
+
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+	float: left;
+	height: 100%;
+}
+
+.jspArrow
+{
+	background: #50506d;
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+}
+
+.jspArrow.jspDisabled
+{
+	cursor: default;
+	background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+	height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+	width: 16px;
+	float: left;
+	height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+	outline: none;
+}
+
+.jspCorner
+{
+	background: #eeeef4;
+	float: left;
+	height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+	margin: 0 -3px 0 0;
+}
+/* Tricka
+**********************************************/
+.tricka {
+	width: 652px;
+	display: none;
+}
+.tricka .text_box_wrap {
+	float: left;
+}
+.tricka p {
+	width: 90%;
+	font-size: 14px;
+	line-height: 22px;
+	margin: 0 auto;
+	padding: 10px 0 0 0;
+}
+.tricka p.top {
+	padding-top: 20px;
+}
+.tricka .center {
+	position: relative;
+	height: 340px;
+}
+.tricka .center a {
+	text-decoration: none;
+}
+.trickoButton {
+	width: 123px;
+	height: 141px;
+	opacity: .6;
+	overflow: hidden;
+}
+.tricko0 {
+	position: absolute;
+	top: 120px;
+	left: 40px;
+}
+.tricko1 {
+	position: absolute;
+	top: 115px;
+	left: 170px;
+}
+.tricko2 {
+	position: absolute;
+	top: 118px;
+	left: 310px;
+}
+.tricko3 {
+	position: absolute;
+	top: 117px;
+	left: 450px;
+}
+.tricko0 span,
+.tricko1 span,
+.tricko2 span,
+.tricko3 span {
+	width: 90px;
+	margin: 0 auto;
+	display: block;
+}
+.skladatelSelector {
+	width: 300px;
+	height: 180px;
+	position: absolute;
+	z-index: 99;
+	display: none;
+}
+.skladatelWrap {
+	width: 100px;
+	height: inherit;
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto;
+}
+.skladatel {
+	width: 369px;
+	position: absolute;
+	top: 55px;
+	left: -14px;
+	display: none;
+}
+.skladatel li {
+	width: 123px;
+	height: 60px;
+	float: left;
+	display: inline;
+}
+.skladatelSelector .arrow {
+	width: 26px;
+	height: 28px;
+	background: transparent url(../../images/tricka/assets.png) top left no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+}
+.skladatelSelector .arrow.left {
+	background-position: -0px -0px;
+	top: 75px;
+	left: 30px;
+}
+.skladatelSelector .arrow.right {
+	background-position: -26px -0px;
+	top: 75px;
+	right: 35px;
+}
+.vivabutton {
+	background-color: #FFF;
+	padding: 3px 10px;
+	color: #000;
+	font-size: 13px;
+	font-weight: bold;
+	
+	transition: background-color .3s;
+	-moz-transition: background-color .3s;
+	-webkit-transition: background-color .3s;
+	-o-transition: background-color .3s;
+}
+.vivabutton:hover {
+	color: #000;
+}
+.vivabutton.orange {
+	background-color: #f58220;
+}
+.vivabutton.orange:hover {
+	background-color: #fff;
+}
+.rot1 {
+	transform:rotate(-1.5deg);
+	-ms-transform:rotate(-1.5deg); /* IE 9 */
+	-moz-transform:rotate(-1.5deg); /* Firefox */
+	-webkit-transform:rotate(-1.5deg); /* Safari and Chrome */
+	-o-transform:rotate(-1.5deg); /* Opera */
+}
+.rot2 {
+	transform:rotate(-4deg);
+	-ms-transform:rotate(-4deg); /* IE 9 */
+	-moz-transform:rotate(-4deg); /* Firefox */
+	-webkit-transform:rotate(-4deg); /* Safari and Chrome */
+	-o-transform:rotate(-4deg); /* Opera */
+}
+.rot3 {
+	transform:rotate(2.5deg);
+	-ms-transform:rotate(2.5deg); /* IE 9 */
+	-moz-transform:rotate(2.5deg); /* Firefox */
+	-webkit-transform:rotate(2.5deg); /* Safari and Chrome */
+	-o-transform:rotate(2.5deg); /* Opera */
+}
+.vivabutton.chcem {
+	position: absolute;
+	bottom: 30px;
+	right: -70px;
+}
+.velkost {
+	width: 150px;
+	height: 300px;
+	position: absolute;
+	top: 120px;
+	right: 70px;
+	z-index: 99;
+	display: none;
+}
+.velkost ul li {
+	width: 70px;
+	height: 36px;
+	line-height: 25px;
+}
+.velkost .select {
+	width: 22px;
+	height: 24px;
+	background-color: #FFF;
+	text-indent: -9999px;
+	position: relative;
+	float: left;
+}
+.velkost ul li span {
+	font-size: 24px;
+	color: #FFF;
+}
+.velkost .check {
+	width: 28px;
+	height: 27px;
+	background: transparent url(../../images/tricka/check.png) top left no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.kusov {
+	width: 300px;
+	height: 60px;
+	margin: 80px 0 0 240px;
+	display: none;
+}
+.kusov span {
+	font-size: 22px;
+	color: #FFF;
+}
+.kusov input {
+	width: 70px;
+	height: 30px;
+	background-color: #FFF;
+	color: #000;
+	font-size: 24px;
+	margin: 0 5px;
+	text-align: center;
+	
+	-moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+}
+.form {
+	width: 455px;
+	margin: 20px 50px 0 0;
+	float: right;
+	display: none;
+}
+.form .row {
+	height: 60px;
+	clear: both;
+}
+.form .label {
+	font-size: 18px;
+	color: #FFF;
+	line-height: 16px;
+}
+.form .label-name {
+	width: 220px;
+	text-align: right;
+	float: left;
+}
+.form .input1 {
+	width: 220px;
+	height: 30px;
+	background-color: #FFF;
+	color: #000;
+	font-size: 18px;
+	margin: 15px 5px 0 5px;
+	padding-left: 5px;
+	text-align: left;
+	float: right;
+	
+	-moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+}
+.form .label-email {
+	width: 220px;
+	text-align: right;
+	float: left;
+}
+.form .input2 {
+	width: 190px;
+	height: 30px;
+	background-color: #FFF;
+	color: #000;
+	font-size: 18px;
+	margin: 0 5px 0 7px;
+	padding-left: 5px;
+	text-align: left;
+	float: left;
+	
+	-moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+}
+.form a {
+	display: block;
+	float: right;
+}
+.form a span {
+	padding: 3px 10px;
+	color: #000;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #f58220;
+	display: block;
+	
+	transition: background-color .3s;
+	-moz-transition: background-color .3s;
+	-webkit-transition: background-color .3s;
+	-o-transition: background-color .3s;
+}
+.form a:hover span {
+	background-color: #FFF;
+}
+.form a span.bottom {
+	margin-left: 15px;
+}
+.thx {
+	width: 400px;
+	margin: 0 auto;
+	display: none;
+}
+.thx p {
+	width: 100%;
+	font-size: 28px;
+	color: #FFF;
+	text-align: center;
+	line-height: 28px;
+	margin: 20px auto 30px auto;
+	display: inline-block;
+}
+.thx a {
+	padding: 3px 10px;
+	color: #000;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #f58220;
+	margin: 30px auto 0 auto;
+	
+	transition: background-color .3s;
+	-moz-transition: background-color .3s;
+	-webkit-transition: background-color .3s;
+	-o-transition: background-color .3s;
+}
+.thx a:hover {
+	background-color: #FFF;
+}
+.steps {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+.steps ul li {
+	width: 20%;
+	background: transparent url(../../images/tricka/arrow.png) top right no-repeat;
+	float: left;
+}
+.steps ul li.krok1 {
+	background-position: 120px 6px;	
+}
+.steps ul li.krok2 {
+	background-position: 123px 14px;	
+}
+.steps ul li.krok3 {
+	background-position: 120px 6px;	
+}
+.steps ul li.krok4 {
+	background-position: 120px 18px;	
+}
+.steps ul li.krok5 {
+	background: none;	
+}
+.steps a span {
+	padding: 3px 10px;
+	color: #000;
+	font-size: 13px;
+	font-weight: bold;
+	background-color: #fff;
+	display: block;
+	cursor: default;
+	
+	-moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -khtml-border-radius: 1px;
+  border-radius: 1px;
+	
+	transition: background-color .3s;
+	-moz-transition: background-color .3s;
+	-webkit-transition: background-color .3s;
+	-o-transition: background-color .3s;
+}
+.steps a span.top {
+	display: inline-block;
+}
+.steps a span.bottom {
+	margin-left: 15px;
+	display: inline-block;
+}
+.steps a span.last {
+	margin-top: 10px;
+	display: inline-block;
+}
+.steps a.active span {
+	background-color: #f58220; 
+}
+.text-box-right {
+	width: 271px;
+	height: 315px;
+	background: transparent url(../../images/tricka/text-box-right.png) top left no-repeat;
+	float: right;
+}
+.text-box-right .text,
+.trickaright {
+	width: 250px;
+	height: 280px;
+}
+.trickaright {
+	margin: 10px 0 0 10px;
+}
+.ticketbox {
+	width: 800px;
+	height: 450px;
+	background: transparent url(../../images/boxes/ticket_bg.png) top left no-repeat;
+	position: absolute;
+	z-index: 20000;
+}
+.ticketbox .holder {
+	width: 760px;
+	height: 430px;
+	margin: 0 auto;
+	padding-top: 20px;
+	position: relative;
+}
+
+/*
+ * Novinky
+ *******************************/
+.butt_novinky {
+ 	width: 111px;
+ 	height: 28px;
+ 	background: transparent url(../../images/novinky_button.png) top left no-repeat;
+ 	font-family: 'Arimo', sans-serif;
+ 	font-size: 14px;
+ 	color: #ffffff;
+ 	text-decoration: none;
+ 	padding: 6px 0 0 15px;
+ 	position: absolute;
+ 	top: 75px;
+ 	right: -25px;
+ 	text-align: left;
+}
+.butt_novinky:hover {
+ 	color: #ffffff;
+}
+.novinky-holder {
+ 	width: 690px;
+ 	height: 400px;
+ 	margin: 50px auto 0 auto;
+ 	overflow: hidden;
+}
+.novinka-box {
+ 	width: 637px;
+ 	height: 67px;
+ 	background: transparent url(../../images/boxes/novinka_box.png) top left no-repeat;
+ 	padding-top: 25px;
+ 	display: inline-block;
+}
+.novinka-box span,
+.novinka-box p {
+ 	font-family: 'Arimo', sans-serif;
+ 	font-size: 14px;
+ 	color: #ffffff;
+ 	text-decoration: none;
+ 	display: inline-block;
+}
+.novinka-box span {
+	padding-left: 15px;
+}
+.novinka-box p {
+	width: 80%;
+	padding-left: 15px;
+}

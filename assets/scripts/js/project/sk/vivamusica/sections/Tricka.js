@@ -1,0 +1,1 @@
+sk.vivamusica.sections.Tricka=function(){var a={},b=null;$(".trickoButton");$(".tricka .center");$(".skladatelSelector");$(".skladatel");$(".center");a.initialize=function(){b=sk.vivamusica.utils.BoxController.factory("BoxNormal");var a=$(".tricka");b.addBox(a)};return a};

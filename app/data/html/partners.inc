@@ -1,6 +1,6 @@
 <?php
 $htmldata .= "<article class=\"partneri_box\">
-        <img src=\"assets/images/partneri/partneri.png?v=02\" width=\"776\" height=\"400\" alt=\"\" usemap=\"#partners\" />
+        <img src=\"assets/images/partneri/partneri.png?v=03\" width=\"776\" height=\"400\" alt=\"\" usemap=\"#partners\" />
       </article>
       <map name=\"partners\">
         <area shape=\"rect\" target=\"_blank\" target=\"_blank\" coords=\"45,39,174,93\" href=\"http://www.slsp.sk/\" alt=\"\" />
@@ -15,21 +15,19 @@ $htmldata .= "<article class=\"partneri_box\">
         <area shape=\"rect\" target=\"_blank\" coords=\"290,202,330,231\" href=\"\" alt=\"\" />
         <area shape=\"rect\" target=\"_blank\" coords=\"336,190,397,247\" href=\"http://www.eu-group.eu/\" alt=\"\" />
 
-        <area shape=\"rect\" target=\"_blank\" coords=\"72,273,140,305\" href=\"http://www.rtvs.sk/sk/domov\" alt=\"\" />
-        <area shape=\"rect\" target=\"_blank\" coords=\"73,310,135,338\" href=\"http://www.ta3.com/\" alt=\"\" />
-        <area shape=\"rect\" target=\"_blank\" coords=\"72,345,135,375\" href=\"http://www.jemnemelodie.sk/titulna-stranka\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"23,274,92,302\" href=\"http://www.rtvs.sk/sk/domov\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"23,310,85,338\" href=\"http://www.ta3.com/\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"23,345,87,375\" href=\"http://www.jemnemelodie.sk/titulna-stranka\" alt=\"\" />
 
-        <area shape=\"rect\" target=\"_blank\" coords=\"166,277,252,304\" href=\"http://www.tyzden.sk/\" alt=\"\" />
-        <area shape=\"rect\" target=\"_blank\" coords=\"182,313,238,340\" href=\"http://www.zenskyweb.sk/kategoria/star\" alt=\"\" />
-        <area shape=\"rect\" target=\"_blank\" coords=\"164,348,257,374\" href=\"http://www.zenskyweb.sk/kategoria/slovenka\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"120,277,203,304\" href=\"http://www.tyzden.sk/\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"132,313,189,341\" href=\"http://www.zenskyweb.sk/kategoria/star\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"115,350,206,373\" href=\"http://www.zenskyweb.sk/kategoria/slovenka\" alt=\"\" />
 
-        <area shape=\"rect\" target=\"_blank\" coords=\"277,262,390,300\" href=\"http://www.akzentmedia.sk/\" alt=\"\" />
-        <area shape=\"rect\" target=\"_blank\" coords=\"286,306,383,332\" href=\"http://www.unimedia.sk/\" alt=\"\" />
-<<<<<<< HEAD
-		<area shape=\"rect\" target=\"_blank\" coords=\"271,342,392,365\" href=\"http://www.citylife.sk/\" alt=\"\" />
-=======
-        <area shape=\"rect\" target=\"_blank\" coords=\"271,342,392,365\" href=\"http://www.citylife.sk/\" alt=\"\" />
->>>>>>> Partners
+        <area shape=\"rect\" target=\"_blank\" coords=\"226,266,339,300\" href=\"http://www.akzentmedia.sk/\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"236,306,328,331\" href=\"http://www.unimedia.sk/\" alt=\"\" />
+        <area shape=\"rect\" target=\"_blank\" coords=\"223,343,341,365\" href=\"http://www.citylife.sk/\" alt=\"\" />
+
+        <area shape=\"rect\" target=\"_blank\" coords=\"355,265,403,310\" href=\"http://www.musicpress.sk/\" alt=\"\" />
 
         <area shape=\"rect\" target=\"_blank\" coords=\"434,274,508,309\" href=\"http://www.bratislava.sk/\" alt=\"\" />
         <area shape=\"rect\" target=\"_blank\" coords=\"436,319,508,343\" href=\"http://www.staremesto.sk/\" alt=\"\" />

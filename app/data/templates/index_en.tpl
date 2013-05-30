@@ -10,7 +10,7 @@
 	<meta name="author" content="Orchestra, s.r.o">
 	<meta name="robots" content="index, follow">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,latin-ext,cyrillic-ext' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" media="all" href="assets/styles/css/main.css">
+  <link rel="stylesheet" type="text/css" media="all" href="assets/styles/css/main.css?v=03">
 	<title>Vivamusica! festival 2013</title> 
   <!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -39,10 +39,11 @@
     <section class="main">
           
     </section>
+    <section class="social-media">
+      <a class="facebook" href="http://www.facebook.com/vivamusicafestival" target="_blank" title="Vivamusica na Facebook">Facebook page</a>
+      <a class="youtube" href="https://www.youtube.com/user/VivaMusicaFestival" target="_blank" title="Vivamusica na Youtube">Youtube channel</a>
+    </section>
     <footer id="footer">
-  		<div class="left">
-      	<a class="facebook" href="http://www.facebook.com/vivamusicafestival" target="_blank" title="Facebook page">Facebook page</a>
-      </div>
       <div class="loga-partneri">
         <span>Diamond partner:</span>
         <a class="partner1" href="http://www.slsp.sk/" title=""><img src="assets/images/partneri/sk-sporitelna.png" alt="" /></a>

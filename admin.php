@@ -57,11 +57,6 @@
 	<script src="assets/scripts/js/admin/backbone-min.js"></script>
 	<script src="assets/scripts/js/admin/jHtmlArea-0.7.5.min.js"></script>
 	<script src="assets/scripts/js/admin/master.js"></script>
-	<script>
-  	$(document).ready(function() {
-	
-	});
-  </script>
 </body>
 </html>
 <?php

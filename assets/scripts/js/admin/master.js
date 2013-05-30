@@ -1,4 +1,5 @@
 var Viva = Viva || {};
+
 Viva.Admin = new function() {
 	var NewsItem,
 		newsItem,
@@ -13,6 +14,7 @@ Viva.Admin = new function() {
 
 		addnew  = null;
 
+		// Model of news
 		NewsItem = Backbone.Model.extend({
 			defaults : {
 				date  : '',
@@ -22,10 +24,11 @@ Viva.Admin = new function() {
 			url: function() {
 				var base = this.urlRoot;
 
-				return base + '?id=' + encodeURIComponent(this.id);
+				return (this.id) ? base + '?id=' + encodeURIComponent(this.id) : base;
 			}
 		});
 
+		// View of news
 		NewsView = Backbone.View.extend({
 			tagElem: 'li',
 			initialize: function() {
@@ -39,16 +42,18 @@ Viva.Admin = new function() {
 			}
 		});
 
+		// Collection news
 		NewsColl = Backbone.Collection.extend({
 			model : NewsItem,
 			url   : 'app/data/admin_news.php'
 		});
 
-		var NewsCollView = Backbone.View.extend({ //TodoListView
+		// Collection view of news
+		var NewsCollView = Backbone.View.extend({
 			tagName : 'ul',
 			className : 'novinky',
 			initialize: function() {
-				console.log('init collection');
+				this.collection.bind('add', _.bind(this.addOne, this));
 				this.collection.bind('reset',_.bind(this.render, this));
 			},
 			render : function() {
@@ -59,45 +64,68 @@ Viva.Admin = new function() {
 					$(this.el).prepend(newsview.render().el);
 			}
 		});
-		newsColl = new NewsColl(); //todoList
+
+		//Init news collection
+		newsColl = new NewsColl();
 		var newsViews = new NewsCollView({collection:newsColl});
 
-		newsColl.fetch({reset: true});
+			// Fetch collection
+			newsColl.fetch({reset: true});
 
-		$holder.append(newsViews.el);
+			$holder.append(newsViews.el);
 
-		// Add new news functionality
-		$btnnew.on('click', function(e) {
-			e.preventDefault();
+			// Add new news functionality
+			$btnnew.on('click', function(e) {
+				e.preventDefault();
 
-			addnew = new AddNews();
-		});
+				addnew = new AddNews();
+			});
 
 		// Function for adding new news
 		function AddNews() {
 			var $master = $('.add-form'),
 				$clone  = null,
-				$cancel = null;
+				$cancel = $save = null;
+				self    = this;
 
 			this.cloneForm = function() {
-				var self = this;
+				$clone = $master.clone();
+				$clone.attr('id', 'addform');
+				$('#main').append($clone);
+				$clone.css({
+					top  : $window.height() * .5 - $clone.height() * .5,
+					left : $window.width() * .5 - $clone.width() * .5
+				}).fadeIn();
 
-					$clone = $master.clone();
-					$clone.attr('id', 'addform');
-					$('#main').append($clone);
-					$clone.css({
-						top  : $window.height() * .5 - $clone.height() * .5,
-						left : $window.width() * .5 - $clone.width() * .5
-					}).fadeIn();
+				$clone.find('textarea').htmlarea();
 
-					$clone.find('textarea').htmlarea();
+				$cancel = $clone.find('.cancel');
+				$cancel.on('click', function(e) {
+					e.preventDefault();
 
-					$cancel = $clone.find('.cancel');
-					$cancel.on('click', function(e) {
-						e.preventDefault();
+					self.removeForm();
+				});
 
-						self.removeForm();
-					});
+				$save = $clone.find('.save');
+				$save.on('click', function(e) {
+					e.preventDefault();
+
+					self.createNews();
+				});
+			}
+
+			this.createNews = function() {
+				var content = {
+						date  : $clone.find('input[name=date]').val(),
+						title : $clone.find('input[name=title]').val(),
+						txt   : $clone.find('#txt').val()
+					},
+					toSave  = new NewsItem();
+					toSave.set({'date':content.date,'title':content.title,'txt':content.txt});
+					toSave.save();
+					newsColl.add(toSave);
+
+					self.removeForm();
 			}
 
 			this.removeForm = function() {

@@ -132,6 +132,7 @@ section {
 .novinky .box p {
   line-height: 25px;
   width: 75%;
+  height: 25px;
   overflow: hidden;
   text-align: left;
   float: left; }

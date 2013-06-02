@@ -13,8 +13,10 @@ $incdata .= "</ul>
       
       <article class=\"text_box novinka\">
       	<div class=\"text_box_wrap\">
+          <h3></h3>
+          <h4></h4>
           <div class=\"text\">
-              <div class=\"scroll-pane text-novinka jspScrollable\">
+              <div class=\"text-novinka\">
               </div>
             </div>
           </div>

@@ -116,7 +116,7 @@ class TemplateController
 
 	/* Function for generating novinky page */
 	public function getNovinky(){
-		$novinky = $this->parentClass->dbController->dbSelectAll("SELECT * FROM news ORDER BY id ASC");
+		$novinky = $this->parentClass->dbController->dbSelectAll("SELECT * FROM news ORDER BY id DESC");
 		$lang = $this->parentClass->sessionController->getLanguage();
 		
 		$include_file = $this->htmlDir.'novinky.inc';

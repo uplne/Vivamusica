@@ -290,13 +290,13 @@ sk.vivamusica.utils.BoxController.BoxProgram = function() {
 	this.showBox = function() {
 		// Add and stylize overlay
 		var self          = this,
-				$closeoverlay = sk.vivamusica.Vivamusica.addOverlay('program'),
-				$clone        = self.box.clone(),
-				id            = Number($clone.attr('id').match(/\d+/)),
-				nextId        = previousId = 0,
-				len           = $('.thumbBox').length;
-				
-				$clone.addClass('clone').attr('id', 'clone');
+			$closeoverlay = sk.vivamusica.Vivamusica.addOverlay('program'),
+			$clone        = self.box.clone(),
+			id            = Number($clone.attr('id').match(/\d+/)),
+			nextId        = previousId = 0,
+			len           = $('.thumbBox').length;
+			
+			$clone.addClass('clone').attr('id', 'clone');
 
 		// Add arrows
 		/*if (id == 1) {
@@ -348,28 +348,40 @@ sk.vivamusica.utils.BoxController.BoxNovinka = function() {
 		// Add and stylize overlay
 		var self          = this,
 			$closeoverlay = sk.vivamusica.Vivamusica.addOverlay('novinky'),
-			$clone        = self.box.clone();
+			$clone        = self.box.clone(),
+			id            = parseInt(window.location.hash.match(/\d+/)),
+			contentDir    = 'app/data/';
+
+		$clone.addClass('clone').attr('id', 'clone');
+
+		$.ajax({
+			type     : 'GET',
+			url      : contentDir + 'getnews.php',
+			data     : 'id=' + id,
+			dataType : 'json'
+		}).done(function(data) {
+			$clone.find('h3').html(data.title);
+			$clone.find('h4').html(data.date);
+			$clone.find('.text-novinka').html(data.txt);
+
+			$('body').append($clone);			
+			$clone.css({
+				'display' : 'block',
+				'opacity' : 0,
+				'filter'  : 'alpha(opacity = 0)',
+				'top'     : sk.vivamusica.utils.Sizes().whHeight - self.box.height() * .5,
+				'left'    : sk.vivamusica.utils.Sizes().whWidth - self.box.width() * .5 + 60,
+				'z-index' : 999
+			}).animate({
+				'left' : '-=60',
+				'opacity' : 1,
+				'filter'  : 'alpha(opacity = 100)'
+			}, 600, 'easeInOutBack');
 			
-		$('body').append($clone);			
-		$clone.css({
-			'display' : 'block',
-			'opacity' : 0,
-			'filter'  : 'alpha(opacity = 0)',
-			'top'     : sk.vivamusica.utils.Sizes().whHeight - self.box.height() * .5,
-			'left'    : sk.vivamusica.utils.Sizes().whWidth - self.box.width() * .5 + 60,
-			'z-index' : 999
-		}).animate({
-			'left' : '-=60',
-			'opacity' : 1,
-			'filter'  : 'alpha(opacity = 100)'
-		}, 600, 'easeInOutBack');
-		
-		self.actual = $clone;
-		
-		// Init scroll pane plugin
-		$clone.find('.scroll-pane').jScrollPane({
-			verticalDragMinHeight: 45,
-			verticalDragMaxHeight: 45
+			self.actual = $clone;
+			
+			// Init scroll pane plugin
+			$clone.find('.text-novinka').mCustomScrollbar({autoDraggerLength:false});
 		});
 	}
 };
@@ -662,12 +674,16 @@ sk.vivamusica.controllers.Controller = function() {
 				topTitle = (subpage) ? subpage : '',
 				subtitle = ((newpage == 'kontakt') || (newpage == 'program') || (newpage == 'media') || ((newpage == 'sienslavy') || (newpage == 'halloffame'))) ? '' : subpage;
 		
-		if ((newpage == 'galeria') || (newpage == 'gallery')) {
-			var title = (subtitle) ? tit[newpage] + ' - ' + subtitle : tit[newpage] + '- 2011';
-			$('#header h2').html(tit[page].toLowerCase() + ((subtitle) ? ' - ' + subtitle : ' - 2011').toLowerCase());
+		if (newpage === 'novinky') {
+			$('#header h2').html('novinky');
 		} else {
-			var title = (subtitle) ? tit[newpage] + ' - ' + tit[subtitle] : tit[newpage];
-			$('#header h2').html(tit[newpage].toLowerCase() + ((subtitle) ? ' - ' + tit[subtitle] : '').toLowerCase());
+			if ((newpage == 'galeria') || (newpage == 'gallery')) {
+				var title = (subtitle) ? tit[newpage] + ' - ' + subtitle : tit[newpage] + '- 2011';
+				$('#header h2').html(tit[page].toLowerCase() + ((subtitle) ? ' - ' + subtitle : ' - 2011').toLowerCase());
+			} else {
+				var title = (subtitle) ? tit[newpage] + ' - ' + tit[subtitle] : tit[newpage];
+				$('#header h2').html(tit[newpage].toLowerCase() + ((subtitle) ? ' - ' + tit[subtitle] : '').toLowerCase());
+			}
 		}
 		
 		// for 2nd level deep linking
@@ -1005,10 +1021,7 @@ sk.vivamusica.sections.Novinky = function(subpage) {
 	function initialize() {		
 		textBox = sk.vivamusica.utils.BoxController.factory('BoxNovinka');
 		// Init scroll pane plugin
-		$('.novinky-holder').jScrollPane({
-			verticalDragMinHeight: 45,
-			verticalDragMaxHeight: 45
-		});
+		$('.novinky-holder').mCustomScrollbar({autoDraggerLength:false});
 		if (subPage) showDetail(subPage);
 	}
 		
@@ -1023,6 +1036,8 @@ sk.vivamusica.sections.Novinky = function(subpage) {
 	
 	function closeDetail() {
 		var $clone = $('.clone');
+
+			console.log($clone);
 		
 			$clone.animate({
 				'left' : '-=60',
@@ -1030,10 +1045,8 @@ sk.vivamusica.sections.Novinky = function(subpage) {
 				'filter'  : 'alpha(opacity = 0)'
 			}, 400, removeClone);
 			
-			function removeClone() {
-				$clone.find('a.left').unbind('click');
-				$clone.find('a.right').unbind('click');
-				($clone).remove();
+			function removeClone() {				
+				$clone.remove();
 				$actualBox = null;
 				
 				sk.vivamusica.Vivamusica.removeOverlay();

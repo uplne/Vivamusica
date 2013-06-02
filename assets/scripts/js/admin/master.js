@@ -1,12 +1,12 @@
 var Viva = Viva || {};
 
 Viva.Admin = new function() {
-	var NewsItem,
-		newsItem,
-		newsView,
-		news,
-		NewsColl,
-		newsColl,
+	var NewsModel,
+		newsitem,
+		NewsView,
+		newsview,
+		NewsCollection,
+		coll,
 
 		$holder = $('.novinky'),
 		$btnnew = $('.new'),
@@ -15,7 +15,7 @@ Viva.Admin = new function() {
 		addnew  = null;
 
 		// Model of news
-		NewsItem = Backbone.Model.extend({
+		NewsModel = Backbone.Model.extend({
 			defaults : {
 				date  : '',
 				title : ''
@@ -30,21 +30,41 @@ Viva.Admin = new function() {
 
 		// View of news
 		NewsView = Backbone.View.extend({
-			tagElem: 'li',
+			tagElem: 'li',			
 			initialize: function() {
 				this.model.bind('change',_.bind(this.render, this));
 			},
+			events: {
+				'click .edit'   : 'edit',
+				'click .delete' : 'clear'
+			},
+			initialize: function() {
+                this.listenTo(this.model, 'destroy', this.remove);
+            },
 			render: function() {
-				var html = '<div class="box"><span class="datum">' + this.model.get('date') + '</span><p>' + this.model.get('title') + '</p><a class="button edit rounded">Editovat</a><a class="button delete rounded">Zmazat</a></div>';
-	    			$(this.el).html(html);
+	    		this.$el.html(render('newstemplate',this.model.toJSON()));
 
 	    		return this;
+			},
+			edit: function() {
+				addnew = new AddEditNews(true,this.model.attributes);
+				console.log(this.model.attributes);
+			},
+			clear: function() {
+				var retVal = confirm("Naozaj zmazat?");
+				    if(retVal === true){
+				       this.model.destroy();
+					   return true;
+				    }else{
+				 	  return false;
+				    }
 			}
+
 		});
 
 		// Collection news
-		NewsColl = Backbone.Collection.extend({
-			model : NewsItem,
+		NewsCollection = Backbone.Collection.extend({
+			model : NewsModel,
 			url   : 'app/data/admin_news.php'
 		});
 
@@ -61,28 +81,28 @@ Viva.Admin = new function() {
 			},
 			addOne: function(newsItem) {
 				var newsview = new NewsView({model:newsItem});
-					$(this.el).prepend(newsview.render().el);
+					this.$el.prepend(newsview.render().el);
 			}
 		});
 
 		//Init news collection
-		newsColl = new NewsColl();
-		var newsViews = new NewsCollView({collection:newsColl});
+		coll = new NewsCollection();
+		var newslist = new NewsCollView({collection:coll});
 
 			// Fetch collection
-			newsColl.fetch({reset: true});
+			coll.fetch({reset: true});
 
-			$holder.append(newsViews.el);
+			$holder.append(newslist.el);
 
 			// Add new news functionality
 			$btnnew.on('click', function(e) {
 				e.preventDefault();
 
-				addnew = new AddNews();
+				addnew = new AddEditNews();
 			});
 
 		// Function for adding new news
-		function AddNews() {
+		function AddEditNews(type, obj) {
 			var $master = $('.add-form'),
 				$clone  = null,
 				$cancel = $save = null;
@@ -91,6 +111,21 @@ Viva.Admin = new function() {
 			this.cloneForm = function() {
 				$clone = $master.clone();
 				$clone.attr('id', 'addform');
+
+				var date  = getDate(),
+					title = txt = '';
+
+				if (type) {
+					date  = obj.date;
+					title = obj.title;
+					txt   = obj.txt;
+				}
+
+				$clone.find('input[name=date]').val(date);
+				$clone.find('input[name=title]').val(title);
+				$clone.find('textarea').val(txt);
+				
+
 				$('#main').append($clone);
 				$clone.css({
 					top  : $window.height() * .5 - $clone.height() * .5,
@@ -99,6 +134,7 @@ Viva.Admin = new function() {
 
 				$clone.find('textarea').htmlarea();
 
+				// Cancel event - will close add popup
 				$cancel = $clone.find('.cancel');
 				$cancel.on('click', function(e) {
 					e.preventDefault();
@@ -106,11 +142,18 @@ Viva.Admin = new function() {
 					self.removeForm();
 				});
 
+				// Save event - will save data and destroy popup
 				$save = $clone.find('.save');
 				$save.on('click', function(e) {
 					e.preventDefault();
 
-					self.createNews();
+					if (type) {
+						var model = coll.get(obj.id);
+							model.save({'date':$clone.find('input[name=date]').val(),'title':$clone.find('input[name=title]').val(),'txt':$clone.find('#txt').val()});
+							self.removeForm();
+					} else {
+						self.createNews();
+					}
 				});
 			}
 
@@ -120,10 +163,9 @@ Viva.Admin = new function() {
 						title : $clone.find('input[name=title]').val(),
 						txt   : $clone.find('#txt').val()
 					},
-					toSave  = new NewsItem();
-					toSave.set({'date':content.date,'title':content.title,'txt':content.txt});
+					toSave  = new NewsModel({'date':content.date,'title':content.title,'txt':content.txt});
 					toSave.save();
-					newsColl.add(toSave);
+					coll.add(toSave);
 
 					self.removeForm();
 			}
@@ -189,6 +231,45 @@ Viva.login = new function() {
 			}
 		}
 };
+
+// Caching templates
+function render(tmpl_name,tmpl_data) {
+	if (!render.tmpl_cache) {
+		render.tmpl_cache = {};
+	}
+
+	if (!render.tmpl_cache[tmpl_name]) {
+		var tmpl_dir = 'assets/static/templates',
+			tmpl_url = tmpl_dir + '/' + tmpl_name + '.html',
+			tmpl_string;
+
+			$.ajax({
+				url:tmpl_url,
+				method:'GET',
+				async: false,
+				dataType: 'html',
+				success: function(data) {
+					tmpl_string = data;
+				}
+			});
+
+			render.tmpl_cache[tmpl_name] = _.template(tmpl_string);
+	}
+
+	return render.tmpl_cache[tmpl_name](tmpl_data);
+}
+
+// Get data format for actual day
+function getDate() {
+	var today  = new Date(),
+		cDay   = today.getDate(),
+		cMonth = today.getMonth(),
+		day    = (cDay < 10) ? '0' + cDay : cDay,
+		month  = (cMonth < 10) ? '0' + cMonth : cMonth,
+		year   = today.getFullYear();
+
+		return day + '.' + month + '.' + year;
+}
 
 Viva.checkField = function(obj) {
 	return (obj.val() !== '') ? true : false;

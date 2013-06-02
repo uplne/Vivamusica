@@ -113,28 +113,34 @@ section {
 .novinky {
   width: 100%;
   margin-top: 20px; }
-  .novinky .box {
-    width: 100%;
-    height: 25px;
-    padding: 15px;
-    margin-bottom: 3px;
-    background-color: whitesmoke;
-    display: inline-block;
-    vertical-align: top;
-    text-decoration: none; }
-    .novinky .box .datum {
-      line-height: 25px;
-      float: left;
-      padding-right: 10px; }
-    .novinky .box p {
-      line-height: 25px;
-      width: 75%;
-      text-align: left;
-      float: left; }
-  .novinky .box:nth-of-type(odd) {
-    background-color: #ebebeb; }
-  .novinky .box:hover, .novinky .box:nth-of-type(odd):hover {
-    color: black; }
+
+.novinky .box {
+  width: 100%;
+  height: 25px;
+  padding: 15px;
+  margin-bottom: 3px;
+  background-color: whitesmoke;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none; }
+
+.novinky .box .datum {
+  line-height: 25px;
+  float: left;
+  padding-right: 10px; }
+
+.novinky .box p {
+  line-height: 25px;
+  width: 75%;
+  overflow: hidden;
+  text-align: left;
+  float: left; }
+
+.novinky .box:nth-of-type(odd) {
+  background-color: #ebebeb; }
+
+.novinky .box:hover, .novinky .box:nth-of-type(odd):hover {
+  color: black; }
 
 .button {
   transition: background 250ms;
@@ -176,12 +182,14 @@ section {
   padding: 10px;
   box-shadow: 2px 2px 3px #888;
   display: none; }
-  .add-form label {
+
+.add-form label {
     width: 100%;
     margin-top: 5px;
     text-align: left;
     display: block; }
-  .add-form input {
+
+.add-form input {
     width: 570px;
     height: 30px;
     margin-bottom: 10px;
@@ -189,7 +197,8 @@ section {
     background-color: #ffffff;
     border: 1px solid #999999;
     float: left; }
-  .add-form textarea {
+
+.add-form textarea {
     width: 580px;
     float: left; }
 

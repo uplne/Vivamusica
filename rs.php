@@ -15,7 +15,6 @@
 	} else {
 		if ($data['pswd'] == $hash) {
 			$_SESSION['logged'] = 'in';
-			echo 'success';
 		} else {
 			echo 'Zle heslo.';
 		}

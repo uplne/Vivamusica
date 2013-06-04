@@ -48,7 +48,6 @@ Viva.Admin = new function() {
 			},
 			edit: function() {
 				addnew = new AddEditNews(true,this.model.attributes);
-				console.log(this.model.attributes);
 			},
 			clear: function() {
 				var retVal = confirm("Naozaj zmazat?");
@@ -59,7 +58,6 @@ Viva.Admin = new function() {
 				 	  return false;
 				    }
 			}
-
 		});
 
 		// Collection news
@@ -101,11 +99,67 @@ Viva.Admin = new function() {
 				addnew = new AddEditNews();
 			});
 
+		function CropImage() {
+			var $master = $('.crop-image'),
+				$close  = $master.find('.cancel'),
+				$crop;
+
+				$master.css({
+					'top'     : $window.height() * .5 - $master.height() * .5,
+					'left'    : $window.width() * .5 - $master.width() * .5,
+					'z-index' : 100
+				}).fadeIn(function() {
+					$crop = $.Jcrop('#cropbox', {
+				      aspectRatio: .8,
+				      onSelect: updateCoords
+				    });
+				});
+
+				function updateCoords(c) {
+				   $('#x').val(c.x);
+				   $('#y').val(c.y);
+				   $('#w').val(c.w);
+				   $('#h').val(c.h);
+				};
+
+				function checkCoords() {
+				   if (parseInt($('#w').val())) return true;
+				   alert('Please select a crop region then press submit.');
+				   return false;
+				};
+
+				$close.on('click', function(e) {
+					e.preventDefault();
+					$crop.destroy();
+					$master.fadeOut();
+				});
+
+				ImageUploader.prototype.cropImage = function(){
+	var ic  = $('#imagecrop');
+	var img = $('#thumbimg');
+	var fimg = $('#finalimg');
+	$('.jcrop-holder').hide();
+	$.ajax({
+		url: '../../handlers/crop.image.php',
+		type: "POST",
+		data: {'x':$('#x1').val(), 'y':$('#y1').val(), 'w':$('#w').val(), 'h':$('#h').val(), 'img': engine.filename},
+		success: function(data) {
+			if(data == 1){
+				img.hide();
+				$('#crop_controls').hide();
+				fimg.attr("src", "../../images/postcards/"+engine.filename+"?r="+Math.random()*999).load(function(){ fimg.show(); $('#upload').css('height', fimg.height()); $('#upload_details').css('height', fimg.height()); $('#crop_redo').show(); });
+				$('#upload').css('background-color', '#EC901A'); 
+			}
+		}
+  });
+}
+		}
+
 		// Function for adding new news
 		function AddEditNews(type, obj) {
 			var $master = $('.add-form'),
 				$clone  = null,
-				$cancel = $save = null;
+				$cancel = $save = $btncrop = null;
 				self    = this;
 
 			this.cloneForm = function() {
@@ -155,6 +209,24 @@ Viva.Admin = new function() {
 						self.createNews();
 					}
 				});
+
+				$clone.find('#fileupload').fileupload({
+			        dataType: 'json',
+			        done: function (e, data) {
+			            var img = new Image();
+
+			            	$(img).load(function() {
+			                  self.onLoadImage($(this),$clone,data.result.files[0].thumbnail_url);
+			                }).attr('src', data.result.files[0].thumbnail_url);
+			        }
+			    });
+			}
+
+			this.onLoadImage = function(obj,parent,src) {
+				var holder = parent.find('.imageholder');
+					holder.empty();
+					holder.append(obj);
+					parent.find('textarea').htmlarea("image", src);
 			}
 
 			this.createNews = function() {
@@ -263,7 +335,7 @@ function render(tmpl_name,tmpl_data) {
 function getDate() {
 	var today  = new Date(),
 		cDay   = today.getDate(),
-		cMonth = today.getMonth(),
+		cMonth = today.getMonth() + 1,
 		day    = (cDay < 10) ? '0' + cDay : cDay,
 		month  = (cMonth < 10) ? '0' + cMonth : cMonth,
 		year   = today.getFullYear();

@@ -266,7 +266,8 @@ em {
 	float: left;
 	position: relative;
 }
-.text_box .text {
+
+.text_box.novinka .text {
 	padding-top: 15px;
 	clear: both; }
 
@@ -279,7 +280,9 @@ em {
 	text-align: left;
 	line-height: 22px;
 }
-.text_box p strong {
+.text_box p strong,
+.text_box p b,
+.text_box b {
 	font-family: 'Arimo', sans-serif;
 	font-size: 14px;
 	font-weight: bold;
@@ -1671,6 +1674,9 @@ em {
 	height: 220px;
     width: 600px;
     margin-left: 15px; }
+
+.text-novinka img {
+	margin: 5px 15px 0 0; }
 
 /* basic scrollbar styling */
 /* vertical scrollbar */

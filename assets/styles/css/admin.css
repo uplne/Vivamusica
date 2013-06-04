@@ -172,10 +172,16 @@ section {
     .button.cancel:hover {
       background-color: #bfbfbf; }
 
+.buttrow {
+  width: 100%;
+  height: 50px;
+  clear: both; }
+
 /* Add form */
-.add-form {
-  width: 600px;
-  height: 500px;
+.add-form,
+.crop-image {
+  width: 750px;
+  height: 550px;
   background-color: #d9d9d9;
   position: absolute;
   top: 50px;
@@ -184,14 +190,19 @@ section {
   box-shadow: 2px 2px 3px #888;
   display: none; }
 
+.add-form #form-add-news {
+  width: 500px;
+  float: left; }
+
 .add-form label {
     width: 100%;
     margin-top: 5px;
     text-align: left;
-    display: block; }
+    display: block;
+    clear: both; }
 
 .add-form input {
-    width: 570px;
+    width: 470px;
     height: 30px;
     margin-bottom: 10px;
     padding-left: 10px;
@@ -200,8 +211,14 @@ section {
     float: left; }
 
 .add-form textarea {
-    width: 580px;
+    width: 480px;
     float: left; }
+
+.add-form .imageholder {
+  width: 250px;
+  height: 300px;
+  display: inline-block;
+  float: right; }
 
 h2 {
   width: 100%;
@@ -211,7 +228,7 @@ h2 {
   float: left; }
 
 .jHtmlArea {
-  width: 580px;
+  width: 480px;
   font-family: Arial, Verdana;
   border: 1px solid #999999;
   margin-bottom: 10px;
@@ -219,3 +236,7 @@ h2 {
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px; }
+
+.crop-image .image-holder {
+  width: 500px;
+  margin: 0 auto; }

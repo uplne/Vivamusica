@@ -36,7 +36,7 @@
    		</nav>
       <h1><a href="" title="Vivamusica! festival">Vivamusica! festival</a></h1>
 	    <h2 class="renaultBold"></h2>
-      <a class="butt_novinky" href="#novinky" title="Novinky">Novinky</a>
+      <!--<a class="butt_novinky" href="#novinky" title="Novinky">Novinky</a>-->
     </header>
     <section class="main">
           

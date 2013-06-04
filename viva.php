@@ -14,7 +14,7 @@
 	<div id="main">
 	    <h1><img src="assets/images/logoemail.jpg" width="180" height="153" /></h1>
 	    <section>
-			<form id="form-login" action="viva.php" method="post">
+			<form id="form-login" action="rs.php" method="post">
 				<label for="name">Login: </label>
 				<input type="text" name="name" value="" />
 				<label for="pwd">Heslo: </label>

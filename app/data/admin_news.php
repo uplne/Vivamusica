@@ -1,5 +1,5 @@
 <?php
-require_once("app/inc/config.inc");
+require_once(getcwd().'/../../app/inc/config.inc');
 
 $content = new Content();
 $content->init();

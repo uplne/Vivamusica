@@ -1042,7 +1042,15 @@ em {
 	background: transparent url(../../images/youtube.png) top left no-repeat;
 	text-indent: -9999px;
 	margin: 10px 0 0 60px;
-	display: inline-block; }	
+	display: inline-block; }
+
+.social-media .bulletin {
+	width: 178px;
+	height: 186px;
+	background: transparent url(../../images/bulletin.png) top left no-repeat;
+	text-indent: -9999px;
+	margin: 0 0 20px 30px;
+	display: block; }	
 
 /* Banner
 **********************************************/

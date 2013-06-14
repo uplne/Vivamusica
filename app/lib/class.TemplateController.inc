@@ -55,6 +55,7 @@ class TemplateController
 		$lang = $this->parentClass->sessionController->getLanguage();
 		$linkdata = '';
 		$articledata = '';
+		$pozvanka = '';
 		
 		$index = 1;
 		foreach($programdata as $i){
@@ -95,9 +96,12 @@ class TemplateController
 				
 			$index++;
 		}
+
+		$pozvanka = "<a class=\"pozvanka\" href=\"#pozvanka\">Pozvanka na Viva Musica!</a>";
 		
 		$htmldata = $linkdata;
 		$htmldata .= $articledata;
+		$htmldata .= $pozvanka;
 		
 		return $htmldata;
 	}

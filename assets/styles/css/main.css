@@ -516,6 +516,38 @@ em {
 	padding: 8px 0 0 0;
 	float: left;
 }
+.pozvanka {
+	width: 263px;
+	height: 135px;
+	background: transparent url(../../images/pozvanka.png) top left no-repeat;
+	position: absolute;
+	top: 100px;
+	left: 0;
+	text-indent: -9999px;
+	opacity: 0; }
+
+.pozvanka-holder {
+	width: 823px;
+	height: 669px;
+	background: transparent url(../../images/pozvanka_bg.png) top left no-repeat;
+	position: absolute;
+	top: 100px;
+	left: 0;
+	z-index: 10000;
+	display: none; }
+
+.if-holder {
+	width: 823px;
+	height: 669px;
+	display: inline-block;
+	vertical-align: top;
+	position: relative; }
+
+.if-holder iframe {
+	position: absolute;
+	top: 193px;
+	left: 151px; }
+
 /* Festival
 **********************************************/
 .text_box p {

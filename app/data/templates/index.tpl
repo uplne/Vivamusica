@@ -42,7 +42,7 @@
           
     </section>
     <section class="social-media">
-      <a class="bulletin" href="http://www.vivamusica.sk/assets/pdf/VivamusicaBulletin2013.pdf" target="_blank" title="Vivamusica Bulletin 2013">Vivamusica Bulletin</a>
+      <a class="bulletin" href="http://www.vivamusica.sk/assets/pdf/VivamusicaBulletin2013.pdf?v=2" target="_blank" title="Vivamusica Bulletin 2013">Vivamusica Bulletin</a>
       <a class="facebook" href="http://www.facebook.com/vivamusicafestival" target="_blank" title="Vivamusica na Facebook">Facebook page</a>
       <a class="youtube" href="https://www.youtube.com/user/VivaMusicaFestival" target="_blank" title="Vivamusica na Youtube">Youtube channel</a>
     </section>

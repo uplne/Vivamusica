@@ -136,7 +136,13 @@ sk.vivamusica.Vivamusica = (function() {
 	}
 	
 	// Overlay method
-	function addOverlay(url) {
+	function addOverlay(url, type) {
+		var xoffset = yoffset = 0;
+
+		if (type) {
+			xoffset = 100;
+			yoffset = -120;
+		}
 		if ($('.overlay').length == 0) {
 			$('body').append('<div class="overlay"></div>');
 			$('body').append('<a class="overlay_close" href="#/' + url + '"></a>');
@@ -146,9 +152,16 @@ sk.vivamusica.Vivamusica = (function() {
 				'z-index' : 100
 			}, 400);
 			$('.overlay_close').css({
-				'top'     : sk.vivamusica.utils.Sizes().whHeight - 190,
-				'left'    : sk.vivamusica.utils.Sizes().whWidth + 285,
-				'z-index' : 101
+				'top'     : sk.vivamusica.utils.Sizes().whHeight - 190 + yoffset,
+				'left'    : sk.vivamusica.utils.Sizes().whWidth + 285 + xoffset,
+				'z-index' : 10001
+			});
+		}
+		if (type) {
+			$('.overlay_close').on('click', function(e) {
+				e.preventDefault();
+				program().destroy();
+				removeOverlay();
 			});
 		}
 		
@@ -534,7 +547,7 @@ sk.vivamusica.controllers.Controller = function() {
 				
 		if ((!actualPage) || (actualPage != page)) {
 			if ((actualPage == 'galeria') || (actualPage == 'gallery')) {
-				obj.clearStage();
+				obj.cladearStage();
 			}
 			updateContent(page);
 		} else {
@@ -857,7 +870,7 @@ function ImageLoader(sUrl, oMainLoader) {
  * @this {sk.vivamusica.sections.Program}
  */
  
-sk.vivamusica.sections.Program = function(subpage) {
+var program = sk.vivamusica.sections.Program = function(subpage) {
 	//==================================================
 	// API
 	//==================================================
@@ -873,6 +886,7 @@ sk.vivamusica.sections.Program = function(subpage) {
 	boxWidth     = 196 + (($(window).width > 1220) ? 40 : 0),
 	offset       = 98,
 	trans        = 'easeInOutBack',
+	pozvanka     = $('.pozvanka'),
 	//==================================================
 	// INSTANCE VARS
 	//==================================================
@@ -885,30 +899,56 @@ sk.vivamusica.sections.Program = function(subpage) {
 	// CALLBACKS
 	//==================================================
 	callbacks = {
-		mouseEnter : function(obj) {
+		mouseEnter    : function(obj) {
 			obj.animate({'top' : '-=10'});
 		},
-		mouseLeave: function(obj) {
+		mouseLeave    : function(obj) {
 			obj.animate({'top' : '+=10'});
 		},
-		arrowClick : function(e, id) {
+		arrowClick    : function(e, id) {
 			e.preventDefault();
 			showProgramDetail(id);
+		},
+		pozvankaClick : function(e) {
+			e.preventDefault();
+
+			showPozvanka();
 		}
 	};
+
+	function showPozvanka() {
+		var holder = $('<section class="pozvanka-holder"><div class="if-holder"><iframe width="494" height="278" src="http://www.youtube.com/embed/_LuWzFshibs" frameborder="0" allowfullscreen></iframe></div></section>'),
+			$closeoverlay = sk.vivamusica.Vivamusica.addOverlay('program',true),
+			body   = $('body');
+
+			holder.css({
+				'top'  : ($(window).height() * .5) - (holder.height() * .5),
+				'left' : windowWidth - (holder.width() * .5)
+			}).fadeIn();
+
+			body.append(holder);
+	}
+
+	function destroyPozvanka() {
+		$('.pozvanka-holder').fadeOut(function() {
+			$(this).remove();
+		});
+	}
 	
 	function initialize() {		
 		textBox = sk.vivamusica.utils.BoxController.factory('BoxProgram');
 		renderProgram();
+
+		pozvanka.on('click', function(e){callbacks.pozvankaClick(e)});
 	}
 	
 	// Position thumbs on stage
 	function renderProgram() {
 		var padding    = 10,
-			  thumbWidth = $('.thumbBox1').width(),		  
-		 		offsetx		 = Math.round(windowWidth - thumbWidth * 2),
-				posTop 		 = posLeft = 0.
-				offsety    = (winHeight > 900) ? -40 : 0;
+			thumbWidth = $('.thumbBox1').width(),		  
+		 	offsetx	   = Math.round(windowWidth - thumbWidth * 2),
+			posTop 	   = posLeft = 0,
+			offsety    = (winHeight > 900) ? -40 : 0;
 				
 		for (var i = 1, len = 10; i < len; i++) {
 			if (i < 4) {
@@ -928,6 +968,16 @@ sk.vivamusica.sections.Program = function(subpage) {
 				'left' : posLeft + 'px'
 			}).delay(i * 150).fadeIn(400).mouseenter(function(){callbacks.mouseEnter($(this));}).mouseleave(function(){callbacks.mouseLeave($(this));});
 		}
+
+		posTop = (winHeight * .5) + (-185 + offsety) - headerHeight;
+
+		pozvanka.css({
+			'top'  : posTop - 50,
+			'left' : windowWidth + 220
+		}).delay(1500).animate({
+			'top'     : posTop,
+			'opacity' : 1
+		});
 		
 		if (subPage) showProgramDetail(subPage);
 		
@@ -968,6 +1018,7 @@ sk.vivamusica.sections.Program = function(subpage) {
 	api.initialize  = initialize;
 	api.closeDetail = closeDetail;
 	api.update      = update;
+	api.destroy     = destroyPozvanka;
 	
 	return api;
 }

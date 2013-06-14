@@ -1,5 +1,5 @@
 <?php
-	require_once("app/inc/config.inc");
+	/*require_once("app/inc/config.inc");
 
 	$content = new Content();
 	$content->init();
@@ -21,7 +21,7 @@
 		}
 	}
 
-	if ($_SESSION['logged'] == 'in') {
+	if ($_SESSION['logged'] == 'in') {*/
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -32,6 +32,7 @@
 	<link rel="Stylesheet" type="text/css" href="assets/styles/css/htmleditor.css" />
   	<link rel="stylesheet" type="text/css" media="all" href="assets/styles/css/admin.css">
   	<link rel="stylesheet" href="assets/styles/css/jquery.fileupload-ui.css">
+  	<link rel="stylesheet" href="assets/styles/css/jquery.Jcrop.css">
 	<title>Vivamusica! Backend</title> 
   <!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -66,7 +67,18 @@
 	    		<button class="button save rounded">Ulozit</button>
 	    		<button class="button cancel rounded">Zrusit</button>
 	    	</form>
+	    </section>
+
+	    <section class="crop-image">
 	    	<div class="imageholder"></div>
+	    	<input type="hidden" size="4" id="x1" name="x1" />
+		  	<input type="hidden" size="4" id="y1" name="y1" />
+			<input type="hidden" size="4" id="x2" name="x2" />
+			<input type="hidden" size="4" id="y2" name="y2" />
+			<input type="hidden" size="4" id="w" name="w" />
+			<input type="hidden" size="4" id="h" name="h" />
+	    	<button class="button save rounded">Ulozit</button>
+	    	<button class="button cancel rounded">Zrusit</button>
 	    </section>
 
 	</div>
@@ -79,6 +91,7 @@
 	<script src="assets/scripts/js/admin/underscore-min.js"></script>
 	<script src="assets/scripts/js/admin/backbone-min.js"></script>
 	<script src="assets/scripts/js/admin/jHtmlArea.js"></script>
+	<script src="assets/scripts/js/admin/jquery.Jcrop.js"></script>
 	<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 	<script src="assets/scripts/js/admin/vendor/jquery.ui.widget.js"></script>
 	<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
@@ -89,8 +102,8 @@
 </body>
 </html>
 <?php
-	} else {
+	/*} else {
 		header("Location: viva.php");
 		exit;
-	}
+	}*/
 ?>

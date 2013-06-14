@@ -101,6 +101,7 @@ Viva.Admin = new function() {
 
 		function CropImage() {
 			var $master = $('.crop-image'),
+				$save   = $master.find('.save'),
 				$close  = $master.find('.cancel'),
 				$crop;
 
@@ -111,21 +112,16 @@ Viva.Admin = new function() {
 				}).fadeIn(function() {
 					$crop = $.Jcrop('#cropbox', {
 				      aspectRatio: .8,
+				      onChange: updateCoords,
 				      onSelect: updateCoords
 				    });
 				});
 
 				function updateCoords(c) {
-				   $('#x').val(c.x);
-				   $('#y').val(c.y);
+				   $('#x1').val(c.x);
+				   $('#y1').val(c.y);
 				   $('#w').val(c.w);
 				   $('#h').val(c.h);
-				};
-
-				function checkCoords() {
-				   if (parseInt($('#w').val())) return true;
-				   alert('Please select a crop region then press submit.');
-				   return false;
 				};
 
 				$close.on('click', function(e) {
@@ -134,25 +130,27 @@ Viva.Admin = new function() {
 					$master.fadeOut();
 				});
 
-				ImageUploader.prototype.cropImage = function(){
-	var ic  = $('#imagecrop');
-	var img = $('#thumbimg');
-	var fimg = $('#finalimg');
-	$('.jcrop-holder').hide();
-	$.ajax({
-		url: '../../handlers/crop.image.php',
-		type: "POST",
-		data: {'x':$('#x1').val(), 'y':$('#y1').val(), 'w':$('#w').val(), 'h':$('#h').val(), 'img': engine.filename},
-		success: function(data) {
-			if(data == 1){
-				img.hide();
-				$('#crop_controls').hide();
-				fimg.attr("src", "../../images/postcards/"+engine.filename+"?r="+Math.random()*999).load(function(){ fimg.show(); $('#upload').css('height', fimg.height()); $('#upload_details').css('height', fimg.height()); $('#crop_redo').show(); });
-				$('#upload').css('background-color', '#EC901A'); 
-			}
-		}
-  });
-}
+				$save.on('click', function(e) {
+					e.preventDefault();
+					cropImage();
+				});
+
+				function cropImage() {
+					var spl = $master.find('img').attr('src').split('/');
+
+						$.ajax({
+							url: 'crop.image.php',
+							type: "POST",
+							data: {'x':$('#x1').val(), 'y':$('#y1').val(), 'w':$('#w').val(), 'h':$('#h').val(), 'img': spl[spl.length - 1]},
+							success: function(data) {
+								if (data === 1){
+									$crop.destroy();
+									$master.fadeOut();
+									parent.find('textarea').htmlarea("image", '../../../../server/php/files/final/' + spl[spl.length - 1]); 
+								}
+							}
+					 	});
+				}
 		}
 
 		// Function for adding new news
@@ -223,10 +221,13 @@ Viva.Admin = new function() {
 			}
 
 			this.onLoadImage = function(obj,parent,src) {
-				var holder = parent.find('.imageholder');
+				var holder  = $('.crop-image .imageholder');
+
 					holder.empty();
+					obj.attr('id', 'cropbox');
 					holder.append(obj);
-					parent.find('textarea').htmlarea("image", src);
+					
+					CropImage();
 			}
 
 			this.createNews = function() {

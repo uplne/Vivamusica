@@ -214,11 +214,11 @@ section {
     width: 480px;
     float: left; }
 
-.add-form .imageholder {
-  width: 250px;
+.imageholder {
+  width: 400px;
   height: 300px;
-  display: inline-block;
-  float: right; }
+  margin: 0 auto;
+  text-align: center; }
 
 h2 {
   width: 100%;

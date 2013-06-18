@@ -543,7 +543,8 @@ em {
 	vertical-align: top;
 	position: relative; }
 
-.if-holder iframe {
+.if-holder iframe,
+.if-holder object {
 	position: absolute;
 	top: 193px;
 	left: 151px; }

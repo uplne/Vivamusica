@@ -922,11 +922,12 @@ var program = sk.vivamusica.sections.Program = function(subpage) {
 			body   = $('body');
 
 			holder.css({
-				'top'  : ($(window).height() * .5) - (holder.height() * .5),
-				'left' : windowWidth - (holder.width() * .5)
-			}).fadeIn();
+				'top'  : ($(window).height() * .5) - 334,
+				'left' : windowWidth - 412
+			});
 
 			body.append(holder);
+			holder.fadeIn();
 	}
 
 	function destroyPozvanka() {

@@ -10,7 +10,7 @@
 	<meta name="author" content="Orchestra, s.r.o">
 	<meta name="robots" content="index, follow">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,latin-ext,cyrillic-ext' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" media="all" href="assets/styles/css/main.css?v=03">
+  <link rel="stylesheet" type="text/css" media="all" href="assets/styles/css/main.css?v=04">
 	<title>Vivamusica! festival 2013</title> 
   <!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -78,7 +78,7 @@
   <script src="assets/scripts/js/plugins/SWFAddress.js"></script>
   <script src="assets/scripts/js/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
 	<!-- Project -->
-	<script src="assets/scripts/js/project/sk/vivamusica/Vivamusica.js"></script>
+	<script src="assets/scripts/js/project/sk/vivamusica/Vivamusica.js?v=03"></script>
 	<script>
   	$(document).ready(function() {
 			sk.vivamusica.Vivamusica.initialize(xLANGx);

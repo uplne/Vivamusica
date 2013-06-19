@@ -917,7 +917,7 @@ var program = sk.vivamusica.sections.Program = function(subpage) {
 	};
 
 	function showPozvanka() {
-		var holder = $('<section class="pozvanka-holder"><div class="if-holder"><iframe width="494" height="278" src="http://www.youtube.com/embed/_LuWzFshibs" frameborder="0" allowfullscreen></iframe></div></section>'),
+		var holder = $('<section class="pozvanka-holder"><div class="if-holder"><iframe width="494" height="278" src="http://www.youtube.com/embed/_LuWzFshibs" frameborder="0" allowfullscreen></iframe></div><div class="sutaz-holder"><a href="https://www.facebook.com/SlovenskaSporitelna/app_389036057867630" target="_blank" title=""><img src="assets/images/btn-sutaz.png" width="232" height="56" alt="" /></a></div></section>'),
 			$closeoverlay = sk.vivamusica.Vivamusica.addOverlay('program',true),
 			body   = $('body');
 
